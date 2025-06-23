@@ -1,0 +1,5 @@
+com\example\reviewapp\controller\ReviewController.class
+com\example\reviewapp\ReviewappApplication.class
+com\example\reviewapp\repository\ReviewRepository.class
+com\example\reviewapp\service\AzureAiService.class
+com\example\reviewapp\model\Review.class

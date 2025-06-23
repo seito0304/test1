@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>口コミ投稿フォーム</title>
+</head>
+<body>
+  <h1>口コミ投稿フォーム</h1>
+  <form id="reviewForm">
+    年齢: <input type="number" name="age"><br>
+    性別: <input type="text" name="gender"><br>
+    カテゴリ: <input type="text" name="category"><br>
+    商品名: <input type="text" name="product"><br>
+    レビュー: <textarea name="review"></textarea><br>
+    日付: <input type="date" name="date"><br>
+    <button type="submit">送信</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    document.getElementById('reviewForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const data = {
+        age: form.age.value,
+        gender: form.gender.value,
+        category: form.category.value,
+        product: form.product.value,
+        review: form.review.value,
+        date: form.date.value
+      };
+
+      fetch('/reviews', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      .then(res => res.json())
+      .then(json => {
+        document.getElementById('result').innerText = "登録成功: ID = " + json.id;
+      })
+      .catch(err => {
+        console.error(err);
+        alert("投稿に失敗しました");
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>口コミ一覧</title>
+</head>
+<body>
+<h1>口コミ一覧</h1>
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>商品</th>
+            <th>カテゴリ</th>
+            <th>性別</th>
+            <th>年齢</th>
+            <th>口コミ</th>
+            <th>感情</th>
+            <th>スコア</th>
+            <th>投稿日</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="review : ${reviews}">
+            <td th:text="${review.id}"></td>
+            <td th:text="${review.product}"></td>
+            <td th:text="${review.category}"></td>
+            <td th:text="${review.gender}"></td>
+            <td th:text="${review.age}"></td>
+            <td th:text="${review.review}"></td>
+            <td th:text="${review.sentiment}"></td>
+            <td th:text="${review.sentimentScore}"></td>
+            <td th:text="${review.date}"></td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>
